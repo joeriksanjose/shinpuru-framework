@@ -4,7 +4,6 @@ class SpDispatcher
     public static function dispatch()
     {
         list($controlador, $action) = self::parseUri($_SERVER["REQUEST_URI"]);
-        var_dump(self::parseUri($_SERVER["REQUEST_URI"]));
 
         $controlador_class_name = Inflector::camelize($controlador) . 'Controlador';
         $action_name = substr_replace($action, "", strpos($action, "?"), strlen($action) - 1);
