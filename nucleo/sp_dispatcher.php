@@ -3,10 +3,9 @@ class SpDispatcher
 {
     public static function dispatch()
     {
-        list($controlador, $action) = self::parseUri($_SERVER["REQUEST_URI"]);
+        list($controlador, $action_name) = self::parseUri($_SERVER["REQUEST_URI"]);
 
         $controlador_class_name = Inflector::camelize($controlador) . 'Controlador';
-        $action_name = substr_replace($action, "", strpos($action, "?"), strlen($action) - 1);
 
         $controlador_instance = new $controlador_class_name;
         $controlador_instance->controlador = $controlador;
@@ -22,6 +21,15 @@ class SpDispatcher
         // remove index.php (if necessary)
         $uri = str_replace("index.php/", "", $uri);
 
-        return explode("/", $uri, 2);
+        $exploded_uri = explode("/", $uri, 2);
+
+        $action_name = $exploded_uri[1];
+        $have_query_params = strpos($exploded_uri[1], "?");
+        if ($have_query_params !== false) {
+            // if there are query params
+            $action_name = substr_replace($exploded_uri[1], "", $have_query_params, strlen($exploded_uri[1]) - 1);
+        }
+
+        return array($exploded_uri[0], $action_name);
     }
 }

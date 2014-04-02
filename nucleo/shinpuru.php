@@ -14,12 +14,13 @@ require_once CONFIG_DIR . 'config.php';
 // nucleo
 require_once NUCLEO_DIR . 'sp_controlador.php';
 require_once NUCLEO_DIR . 'sp_modelo.php';
-require_once NUCLEO_DIR . 'sp_vista.php';
 require_once NUCLEO_DIR . 'sp_dispatcher.php';
 require_once NUCLEO_DIR . 'sp_exception.php';
+require_once NUCLEO_DIR . 'sp_request.php';
 
 // libraries
 require_once LIB_DIR . 'inflector.php';
+require_once LIB_DIR . 'database.php';
 
 // autoloader function
 spl_autoload_register(
