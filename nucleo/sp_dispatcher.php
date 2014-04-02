@@ -21,7 +21,11 @@ class SpDispatcher
         // remove index.php (if necessary)
         $uri = str_replace("index.php/", "", $uri);
 
-        $exploded_uri = explode("/", $uri, 2);
+        $exploded_uri = explode("/", $uri);
+
+        if (count($exploded_uri) > 2) {
+            throw new SpException("Invalid URL format");
+        }
 
         $action_name = $exploded_uri[1];
         $have_query_params = strpos($exploded_uri[1], "?");
