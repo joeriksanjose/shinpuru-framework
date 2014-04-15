@@ -11,8 +11,17 @@ class SpDispatcher
         $controlador_instance->controlador = $controlador;
         $controlador_instance->action = $action_name;
         $controlador_instance->{$action_name}();
+
+        echo $controlador_instance->output;
     }
 
+    /**
+     * Sample URL : http://shinpuru.e/controller/action
+     *
+     * @param $uri
+     * @return array
+     * @throws SpException
+     */
     private static function parseUri($uri)
     {
         // remove first slash
