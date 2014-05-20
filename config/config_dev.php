@@ -1,6 +1,8 @@
 <?php
 define('MAIN_URL', 'http://shinpuru.e/');
 define('MAIN_HOST_NAME', 'shinpuri.e');
+define('DEFAULT_CONTROLADOR', 'main');
+define('DEFAULT_ACTION', 'index');
 define('IS_PROD', false);
 
 ini_set('display_errors', 'On');

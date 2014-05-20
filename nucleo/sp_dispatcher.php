@@ -24,6 +24,11 @@ class SpDispatcher
      */
     private static function parseUri($uri)
     {
+        if ($uri === "/") {
+            // default action
+            return array(DEFAULT_CONTROLADOR, DEFAULT_CONTROLADOR);
+        }
+
         // remove first slash
         $uri = substr_replace($uri, "", 0, 1);
 
